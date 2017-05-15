@@ -10,6 +10,26 @@
         android:id="@+id/textView"
         android:layout_width="109dp"
         android:layout_height="35dp"
+        android:text="Age"
+        android:textAlignment="viewStart"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="120dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="109dp"
+        android:layout_height="35dp"
+        android:text="Gender"
+        android:textAlignment="viewStart"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="196dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="109dp"
+        android:layout_height="35dp"
         android:text="Name"
         android:textAlignment="viewStart"
         android:textSize="30sp"
@@ -22,14 +42,35 @@
         android:layout_height="35dp"
         android:ems="10"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="125dp"
+        tools:layout_editor_absoluteX="128dp"
         tools:layout_editor_absoluteY="44dp" />
+
+    <EditText
+        android:id="@+id/editText_Gender"
+        android:layout_width="176dp"
+        android:layout_height="35dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="128dp"
+        tools:layout_editor_absoluteY="196dp" />
+
+    <EditText
+        android:id="@+id/editText_Age"
+        android:layout_width="176dp"
+        android:layout_height="35dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="128dp"
+        tools:layout_editor_absoluteY="120dp" />
 
     <Button
         android:id="@+id/button_add"
         android:layout_width="88dp"
         android:layout_height="48dp"
+        android:nestedScrollingEnabled="true"
+        android:onClick="addData"
         android:text="Add"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="388dp" />
+        tools:layout_editor_absoluteX="116dp"
+        tools:layout_editor_absoluteY="376dp" />
+
 </android.support.constraint.ConstraintLayout>
