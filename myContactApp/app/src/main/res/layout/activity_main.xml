@@ -70,7 +70,16 @@
         android:nestedScrollingEnabled="true"
         android:onClick="addData"
         android:text="Add"
-        tools:layout_editor_absoluteX="116dp"
-        tools:layout_editor_absoluteY="376dp" />
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="374dp" />
+
+    <Button
+        android:id="@+id/button_getData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="viewData"
+        android:text="Get Data"
+        tools:layout_editor_absoluteX="175dp"
+        tools:layout_editor_absoluteY="374dp" />
 
 </android.support.constraint.ConstraintLayout>
