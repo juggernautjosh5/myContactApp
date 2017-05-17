@@ -46,8 +46,11 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         contentValues.put(COL_4, gender );
 
         long result = db.insert(TABLE_NAME, null, contentValues);
-        if(result == -1) return false;
-        else return true;
+        if(result == -1) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public Cursor getAllData(){
