@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     EditText editAge;
     EditText editGender;
     String[] fields;
+    EditText search;
 
 
     @Override
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         editName = (EditText) findViewById(R.id.editText_Name);
         editAge = (EditText) findViewById(R.id.editText_Age);
         editGender = (EditText) findViewById(R.id.editText_Gender);
+        search = (EditText) findViewById(R.id.editText_Search);
+        fields = new String[]{"NAME: ", "AGE: ", "GENDER: "};
     }
 
     public void addData(View v){
@@ -41,15 +44,15 @@ public class MainActivity extends AppCompatActivity {
         if(isInserted == true){
             Log.d("MyContact", "Success inserting data");
             //Insert Toast mesage here.......
-            Toast.makeText(v.getContext(), "You did it!", Toast.LENGTH_LONG).show();
+            Toast.makeText(v.getContext(), "Data Added", Toast.LENGTH_LONG).show();
         } else{
             Log.d("MyContact", "Failure inserting data");
             //Insert Toast mesage here.......
-            Toast.makeText(v.getContext(), "You didn't do it!", Toast.LENGTH_LONG).show();
+            Toast.makeText(v.getContext(), "Data was not added", Toast.LENGTH_LONG).show();
         }
     }
 
-    public void viewData(){
+    public void viewData(View v){
         Cursor res = myDb.getAllData();
         if (res.getCount() == 0){
             //It's empty
@@ -65,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 buffer.append(res.getString(j));
                 buffer.append("\n");
             }
+            buffer.append("\n");
             res.moveToNext();
         }
 
@@ -79,5 +83,38 @@ public class MainActivity extends AppCompatActivity {
         alertDialogBuilder.setTitle(error);
         alertDialogBuilder.setMessage(s);
         alertDialogBuilder.show();
+    }
+
+    public void searchName(View v){
+        Cursor res = myDb.getAllData();
+        if (res.getCount() == 0){
+            //It's empty
+            showMessage("Error", "No Data Found in DataBase");
+            return;
+        }
+        StringBuffer buffer = new StringBuffer();
+        res.moveToFirst();
+        //SetUp Loop with Coursor using moveToNext
+        for(int i = 0; i<res.getCount(); i++){
+
+            if(res.getString(1).equals(search.getText().toString())){
+                buffer.append("ID: " + i);
+                for(int j = 1; j<=3; j++){
+                    buffer.append(fields[j-1]);
+                    buffer.append(res.getString(j));
+                    buffer.append("\n");
+                }
+                break;
+            }
+            res.moveToNext();
+
+        }
+        if (buffer.toString().isEmpty()){
+            showMessage("Error", "Name not found");
+            return;
+        }
+
+
+        showMessage("Data Found", buffer.toString());
     }
 }
