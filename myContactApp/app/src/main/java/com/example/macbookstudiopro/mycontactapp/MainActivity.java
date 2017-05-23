@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     EditText editAge;
     EditText editGender;
     String[] fields;
-    EditText search;
 
 
     @Override
@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         editName = (EditText) findViewById(R.id.editText_Name);
         editAge = (EditText) findViewById(R.id.editText_Age);
         editGender = (EditText) findViewById(R.id.editText_Gender);
-        search = (EditText) findViewById(R.id.editText_Search);
         fields = new String[]{"NAME: ", "AGE: ", "GENDER: "};
     }
 
@@ -85,7 +84,13 @@ public class MainActivity extends AppCompatActivity {
         alertDialogBuilder.show();
     }
 
-    public void searchName(View v){
+    public void changeView(View v){
+        Intent i = new Intent(this, Main2Activity.class);
+        startActivity(i);
+
+    }
+
+    /*public void searchName(View v){
         Cursor res = myDb.getAllData();
         if (res.getCount() == 0){
             //It's empty
@@ -116,5 +121,5 @@ public class MainActivity extends AppCompatActivity {
 
 
         showMessage("Data Found", buffer.toString());
-    }
+    }*/
 }
